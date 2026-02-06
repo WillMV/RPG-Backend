@@ -34,4 +34,5 @@ jobs:
             "project": "prj_VG1MJOGPVDTqR3DWvaRSJCV8X38e",
             "target": "preview",
             "gitBranch": "'"${{ github.event.pull_request.head.ref }}"'"
+            "name": "rpg"
           }'
