@@ -21,6 +21,6 @@ jobs:
             "key": "VITE_SOCKET_URL",
             "value": "'"$BACKEND_URL"'",
             "target": ["preview"],
-            "type": "plain"
+            "type": "plain",
             "gitBranch": "'"${{ github.event.pull_request.head.ref }}"'"
           }'
