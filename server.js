@@ -15,7 +15,7 @@ const io = new socket.Server(httpServer, {
 io.on("connection", (socket) => {
   console.log("Um Cliente se conectou", socket.id); //Log online
   socket.on("disconnect", () => {
-    console.log("Cliente desconctado", socket.id); //Log offline
+    console.log("Cliente desconectado", socket.id); //Log offline
   });
   socket.on("coords", (coords) => {
     socket.emit("coords", coords);
