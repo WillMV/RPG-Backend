@@ -10,6 +10,7 @@ jobs:
       - name: Set PR Vars
         run: |
           echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          source $GITHUB_ENV
           echo "BACKEND_URL=https://rpg-backend-pr-${PR_NUMBER}.onrender.com" >> $GITHUB_ENV
 
       - name: Update Frontend Env
