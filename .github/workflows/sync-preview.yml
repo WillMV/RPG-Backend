@@ -1,0 +1,25 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  set-env:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set PR Vars
+        run: |
+          echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          echo "BACKEND_URL=https://rpg-backend-pr-${PR_NUMBER}.onrender.com" >> $GITHUB_ENV
+
+      - name: Update Frontend Env
+        run: |
+          curl -X POST https://api.vercel.com/v10/willmvs-projects/rpg/env \
+          -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "key": "NEXT_PUBLIC_API_URL",
+            "value": "'"$BACKEND_URL"'",
+            "target": ["preview"],
+            "gitBranch": "'"${{ github.event.pull_request.head.ref }}"'"
+          }'
