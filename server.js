@@ -6,7 +6,11 @@ const app = express();
 const httpServer = http.createServer(app);
 const io = new socket.Server(httpServer, {
   cors: {
-    origin: ["http://localhost:5173", "https://rpg-alpha-two.vercel.app"], // ou use um array se quiser permitir múltiplas origens
+    origin: [
+      "http://localhost:5173",
+      "https://rpg-alpha-two.vercel.app",
+      /^https:\/\/[a-z0-9-]+\.vercel\.app$/,
+    ], // ou use um array se quiser permitir múltiplas origens
     methods: ["GET", "POST"],
     credentials: true,
   },
