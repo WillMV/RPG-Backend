@@ -18,6 +18,7 @@ io.on("connection", (socket) => {
     console.log("Cliente desconectado", socket.id); //Log offline
   });
   socket.on("coords", (coords) => {
+    console.log(coords);
     socket.emit("coords", coords);
   });
 });
