@@ -14,11 +14,11 @@ jobs:
 
       - name: Update Frontend Env
         run: |
-          curl -X POST https://api.vercel.com/v10/willmvs-projects/rpg/env \
+          curl -X POST https://api.vercel.com/v10/projects/prj_VG1MJOGPVDTqR3DWvaRSJCV8X38e/env \
           -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
           -H "Content-Type: application/json" \
           -d '{
-            "key": "NEXT_PUBLIC_API_URL",
+            "key": "VITE_SOCKET_URL",
             "value": "'"$BACKEND_URL"'",
             "target": ["preview"],
             "gitBranch": "'"${{ github.event.pull_request.head.ref }}"'"
