@@ -25,3 +25,13 @@ jobs:
             "type": "plain",
             "gitBranch": "'"${{ github.event.pull_request.head.ref }}"'"
           }'
+      - name: Trigger Vercel Preview Deploy
+        run: |
+          curl -X POST "https://api.vercel.com/v13/deployments" \
+          -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "project": "prj_VG1MJOGPVDTqR3DWvaRSJCV8X38e",
+            "target": "preview",
+            "gitBranch": "'"${{ github.event.pull_request.head.ref }}"'"
+          }'
