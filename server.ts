@@ -12,7 +12,7 @@ const io = new socket.Server(httpServer, {
     origin: [
       "http://localhost:5173",
       "https://rpg-alpha-two.vercel.app",
-      /^https:\/\/[a-z0-9-]+\.vercel\.app$/,
+      /^https:\/\/[a-z0-9-]+\/willmvs-projects\.vercel\.app$/,
     ], // ou use um array se quiser permitir múltiplas origens
     methods: ["GET", "POST"],
     credentials: true,
