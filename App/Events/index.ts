@@ -1,7 +1,7 @@
-import { IRegistry } from "../utils";
+import { IRegistry } from "../utils/interfaces";
 import presenceRegistry from "./presenceEvent";
 
-const registry = ({ io, socket, prisma }: IRegistry) => {
+const registry = ({ io, socket }: IRegistry) => {
   presenceRegistry({ io, socket });
 };
 
