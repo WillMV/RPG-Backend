@@ -10,6 +10,7 @@ jobs:
       - name: Set PR Vars
         run: |
           echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          source $GITHUB_ENV
           echo "BACKEND_URL=https://rpg-backend-pr-${PR_NUMBER}.onrender.com" >> $GITHUB_ENV
 
       - name: Update Frontend Env
@@ -21,6 +22,7 @@ jobs:
             "key": "VITE_SOCKET_URL",
             "value": "'"$BACKEND_URL"'",
             "target": ["preview"],
+            "type": "plain",
             "gitBranch": "'"${{ github.event.pull_request.head.ref }}"'"
           }'
       - name: Trigger Vercel Preview Deploy
@@ -31,5 +33,6 @@ jobs:
           -d '{
             "project": "prj_VG1MJOGPVDTqR3DWvaRSJCV8X38e",
             "target": "preview",
-            "gitBranch": "'"${{ github.event.pull_request.head.ref }}"'"
+            "gitBranch": "'"${{ github.event.pull_request.head.ref }}"'",
+            "name": "rpg"
           }'
