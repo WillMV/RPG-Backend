@@ -1,5 +1,6 @@
 import { Router } from "express";
 import authController from "../Controller/authController";
+import middlewares from "../Middlewares";
 
 const authRoutes = Router();
 // Post
@@ -13,6 +14,10 @@ authRoutes.post(
 
 //Patch
 authRoutes.patch("/reset-password", authController.resetPassword);
-authRoutes.patch("/update-password", authController.updatePassword);
+authRoutes.patch(
+  "/update-password",
+  middlewares.validateToken,
+  authController.updatePassword,
+);
 
 export default authRoutes;
