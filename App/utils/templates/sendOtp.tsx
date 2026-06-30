@@ -12,10 +12,17 @@ import {
   Text,
 } from "@react-email/components";
 
-export function sendOTP(name: string, otp: string) {
-  // const domain = process.env.FRONTEND_DOMAIN ;
-  const domain = "https://rpg.willmv.com.br";
-  const validateUrl = `${domain}/validateAccount?otp=${otp}`;
+export function sendOTP({
+  name,
+  otp,
+  email,
+}: {
+  name: string;
+  otp: string;
+  email: string;
+}) {
+  const domain = process.env.FRONTEND_DOMAIN;
+  const validateUrl = `${domain}/validateAccount?otp=${otp}&email=${email}`;
   const digits = otp.split("");
 
   return (
