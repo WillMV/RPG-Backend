@@ -1,4 +1,4 @@
-import { IRegistry } from "../utils";
+import { IRegistry } from "../utils/interfaces";
 
 const boardRegistry = ({ io, socket }: IRegistry) => {};
 
